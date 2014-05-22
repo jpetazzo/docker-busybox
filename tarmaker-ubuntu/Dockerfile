@@ -12,7 +12,7 @@ RUN ln -s lib lib64
 RUN ln -s bin sbin
 RUN cp /bin/busybox bin
 RUN for X in $(busybox --list) ; do ln -s busybox bin/$X ; done
-RUN bash -c "cp /lib/x86_64-linux-gnu/lib{c,dl,nsl,nss_*,pthread,resolv}.so.* lib"
+RUN bash -c "cp /lib/x86_64-linux-gnu/lib{c,m,dl,rt,nsl,nss_*,pthread,resolv}.so.* lib"
 RUN cp /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 lib
 RUN tar cf /rootfs.tar .
 RUN for X in console null ptmx random stdin stdout stderr tty urandom zero ; do tar uf /rootfs.tar -C/ ./dev/$X ; done
