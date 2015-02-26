@@ -42,6 +42,7 @@ RUN for CFGVAR in \
     CONFIG_FEATURE_PREFER_IPV4_ADDRESS \
     CONFIG_FEATURE_BRCTL_FANCY \
     CONFIG_FEATURE_BRCTL_SHOW \
+    CONFIG_FEATURE_BASH_IS_ASH \
     ; do sed -i "s/# $CFGVAR is not set/$CFGVAR=y/" package/busybox/busybox.config ; done
 RUN make olddefconfig
 RUN make
