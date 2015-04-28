@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 # This will make it easier to upgrade to the next version of buildroot.
 # You might have to also update the busybox version at the end of this file!
-ENV BUILDROOT_VERSION 2014.11
+ENV BUILDROOT_VERSION 2015.02
 # This will get rid of a build warning related to 'tput'.
 ENV TERM dumb
 RUN apt-get update -q
@@ -12,7 +12,7 @@ RUN which python || ln /usr/bin/python3 /usr/bin/python
 RUN echo progress = dot:mega > /.wgetrc
 RUN wget http://buildroot.uclibc.org/downloads/buildroot-$BUILDROOT_VERSION.tar.gz
 # Check that we got the right tarball (update this when upgrading buildroot!)
-RUN echo "dcfcaa315469e7d0bfdfe59ac216f808  buildroot-$BUILDROOT_VERSION.tar.gz" > buildroot.md5
+RUN echo "d1559c7651982d62be3544561f1cb81b  buildroot-$BUILDROOT_VERSION.tar.gz" > buildroot.md5
 RUN md5sum --check buildroot.md5
 RUN tar -zxf buildroot-$BUILDROOT_VERSION.tar.gz
 # This symlink is because WORKDIR doesn't expand $VARS.
